@@ -5,9 +5,9 @@ if con.is_connected():
 print("")
 cursor=con.cursor()
 from datetime import date,datetime
+import random as r
 def add_employee():
     global table_name
-    import random as r
     EMP_TABLE={}
     while True:
         print("Enter the following information. Please don't leave any empty.")
@@ -127,7 +127,7 @@ def change_pwd_admin():
         print(cursor.fetchall())
         for i in cursor.fetchall():
             choice=input("You would like to change",i,"password. Is that correct? (Y/N)")
-            if choice.lower()==y:
+            if choice.lower()=='y':
                 new_pwd=r.randint(100000,1000000)
                 cursor.execute("update EMPLOYEE set password='{}' where EMP_ID={}".format(new_pwd,EMP_ID))
                 con.commit()
